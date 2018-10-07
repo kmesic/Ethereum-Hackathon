@@ -1,26 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import NavBar from './components/NavBar.js';
+import CreateButton from './components/CreateButton.js';
+import HomeView from './routes/HomeView.js';
+import TransactionView from './routes/TransactionView.js';
+import CreateView from './routes/CreateView.js';
+import HistoryView from './routes/HistoryView.js';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import indigo from '@material-ui/core/colors/indigo';
+import amber from '@material-ui/core/colors/amber';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: indigo,
+    secondary: amber,
+  },
+});
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <MuiThemeProvider theme={theme}>
+        <div className="App">
+          <BrowserRouter>
+              <div>
+                <NavBar/>
+                <Switch>
+                  <Route exact path="/" component={HomeView} />
+                  <Route path="/create" component={CreateView} />
+                  <Route path="/transaction" component={TransactionView} />
+                  <Route path="/history" component={HistoryView} />
+                </Switch>
+                <CreateButton/>
+              </div>
+          </BrowserRouter>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
