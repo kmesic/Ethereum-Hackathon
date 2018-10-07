@@ -16,13 +16,17 @@ const styles = theme => ({
     bottom: theme.spacing.unit * 2,
     right: theme.spacing.unit * 2,
   },
+  root: {
+    fontSize: "1em",
+  }
 });
+
 
 class CreateButton extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Tooltip title="Create Transaction">
+      <Tooltip title="Create Vault">
         <Button color="secondary" variant="extendedFab" aria-label="Delete" className={classes.fab}>
             <Create className={classes.createIcon} />
             <Typography variant="title">

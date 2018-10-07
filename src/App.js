@@ -6,6 +6,7 @@ import HomeView from './routes/HomeView.js';
 import TransactionView from './routes/TransactionView.js';
 import CreateView from './routes/CreateView.js';
 import HistoryView from './routes/HistoryView.js';
+import NewView from './routes/NewView.js';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import indigo from '@material-ui/core/colors/indigo';
 import amber from '@material-ui/core/colors/amber';
@@ -15,6 +16,13 @@ const theme = createMuiTheme({
     primary: indigo,
     secondary: amber,
   },
+  overrides: {
+    MuiTooltip: {
+      tooltip: {
+        fontSize: "1em",
+      }
+    }
+  }
 });
 
 class App extends Component {
@@ -30,6 +38,7 @@ class App extends Component {
                   <Route path="/create" component={CreateView} />
                   <Route path="/transaction" component={TransactionView} />
                   <Route path="/history" component={HistoryView} />
+                  <Route path="/new" component={NewView} />
                 </Switch>
                 <CreateButton/>
               </div>
